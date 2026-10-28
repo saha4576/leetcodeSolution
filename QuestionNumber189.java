@@ -10,26 +10,31 @@ rotate 2 steps to the right: [6,7,1,2,3,4,5]
 rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
 */
-
 public class QuestionNumber189 {
-    static int rev(int [] num, int start,int end){
-        int n=num.length;
-        while(start >= end){
-            int temp=num[start];
-            num[start]=num[end];
-            num[end]=temp;
-        
-        start=start+1;
-        end=end-1;
-        }
-        return rev(num,0,num.length-1);
-        return rev(num,0,k-1);
-
-    }
-    public static void main(String[] args){
-        int [] num={ 1,2,3,4,5,6,7};
+     public static void main(String[] args){
+        int [] nums={ 1,2,3,4,5,6,7};
         int k=3;
-        System.out.print(rev(num,k,0,end));
+        int count=0;
+        int n=nums.length;
+      
+       
+       for(int i=0;count<n;i++){
+            int idx=i;
+            int curr=nums[idx];
+            do{
+                int next=nums[(idx+k)%n];
+                nums[(idx+k)%n]=curr;
+                curr=next;
+                idx=(idx+k)%n;
+                count=count+1;
+            }
+            while(idx!=i);
+        }
+         for (int i = 0; i < n; i++) {
+            System.out.print(nums[i] + " ");
+        }
+       
     }
+   
     
 }
